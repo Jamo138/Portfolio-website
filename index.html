@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jamo's Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="js/script.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Jamo</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 id="typing-effect"></h1>
+            <p>Building innovative and creative web solutions</p>
+            <div class="slideshow-container">
+                <div class="slide fade">
+                    <img src="assets/slide1.jpg" alt="Slide 1">
+                </div>
+                <div class="slide fade">
+                    <img src="assets/slide2.jpg" alt="Slide 2">
+                </div>
+                <div class="slide fade">
+                    <img src="assets/slide3.jpg" alt="Slide 3">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <p>Hi, I'm Jamo, a passionate developer skilled in web development, JavaScript, and UI/UX design.</p>
+                <ul>
+                    <li>💻 Full Stack Developer</li>
+                    <li>🎨 UI/UX Enthusiast</li>
+                    <li>📚 Computer Science Graduate</li>
+                </ul>
+            </div>
+            <div class="about-image">
+                <img src="assets/profile.jpg" alt="Jamo">
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects" class="projects">
+        <h2>Projects</h2>
+        <input type="text" id="search" placeholder="Search projects...">
+        <div class="project-list">
+            <div class="project" data-name="Project 1">Project 1</div>
+            <div class="project" data-name="Project 2">Project 2</div>
+            <div class="project" data-name="Project 3">Project 3</div>
+        </div>
+    </section>
+    
+    <section id="blog" class="blog">
+        <h2>Blog</h2>
+        <div id="comments-section">
+            <h3>Leave a comment</h3>
+            <input type="text" id="comment-input" placeholder="Write a comment...">
+            <button onclick="addComment()">Post</button>
+            <ul id="comment-list"></ul>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <form id="contact-form">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+        <p id="confirmation-message" style="display:none;">Thank you for your message!</p>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Jamo. All rights reserved.</p>
+    </footer>
+</body>
+</html>

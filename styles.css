@@ -1,0 +1,209 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif;
+}
+
+body {
+    background: #121212;
+    color: #ddd;
+    line-height: 1.6;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: #1a1a1a;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #8ab4f8;
+}
+
+/* Section Headers */
+h2 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #8ab4f8;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: #8ab4f8;
+    margin: 10px auto 0;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #0f0f0f, #1c1c1c);
+    color: white;
+    text-align: center;
+    flex-direction: column;
+    padding: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Sections */
+.section {
+    padding: 60px 10%;
+    background: #1a1a1a;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* About Section */
+.about-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.about-text {
+    flex: 1;
+    font-size: 1.2rem;
+    color: #bbb;
+    line-height: 1.8;
+}
+
+.about-image img {
+    width: 250px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Projects Section */
+.project-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.project {
+    width: 250px;
+    height: 180px;
+    background: #282828;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.project:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
+    background: #8ab4f8;
+}
+
+/* Contact Section */
+.contact {
+    background: #222;
+    padding: 50px;
+    text-align: center;
+    color: #ddd;
+}
+
+.contact form {
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact input, .contact textarea {
+    padding: 12px;
+    font-size: 1.1rem;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background: #333;
+    color: white;
+}
+
+.contact input:focus, .contact textarea:focus {
+    border: 1px solid #8ab4f8;
+}
+
+.contact button {
+    padding: 12px;
+    font-size: 1.1rem;
+    background: #8ab4f8;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.contact button:hover {
+    background: #6c9ce8;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #181818;
+    color: white;
+    font-size: 1rem;
+}
