@@ -6,6 +6,10 @@
     font-family: 'Orbitron', sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: #121212;
     color: #ddd;
@@ -162,6 +166,7 @@ h2::after {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
     border-radius: 12px;
     color: white;
     font-weight: bold;
