@@ -1,5 +1,5 @@
 // Typing Effect
-const textArray = ["Full Stack Developer", "UI/UX Enthusiast", "Creative Coder"];
+const textArray = ["Hi, My Name Is Michael", "Welcome To My Portfolio"];
 let textIndex = 0;
 let charIndex = 0;
 function typeEffect() {
@@ -16,19 +16,84 @@ function typeEffect() {
         }, 2000);
     }
 }
+document.getElementById("typing-effect").classList.add("typing-font");
 typeEffect();
 
 // Slideshow
 let slideIndex = 0;
-function showSlides() {
+let slideTimer;
+
+const slides = document.querySelectorAll(".slide");
+const nextButton = document.getElementById("next");
+const prevButton = document.getElementById("prev");
+
+// Show the current slide
+function showSlide(index) {
     let slides = document.querySelectorAll(".slide");
-    slides.forEach(slide => slide.style.display = "none");
-    slideIndex++;
-    if (slideIndex > slides.length) { slideIndex = 1; }
-    slides[slideIndex - 1].style.display = "block";
-    setTimeout(showSlides, 3000);
+    let dots = document.querySelectorAll(".dot");
+
+    slides.forEach((slide, i) => {
+        slide.style.display = i === index ? "block" : "none";
+    });
+
+    dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+    });
 }
-showSlides();
+
+// Move to the next slide automatically
+function autoSlide() {
+    slideIndex = (slideIndex + 1) % slides.length;
+    showSlide(slideIndex);
+}
+
+// Change slide manually and reset timer
+function changeSlide(direction) {
+    slideIndex += direction;
+    if (slideIndex >= slides.length) slideIndex = 0;
+    if (slideIndex < 0) slideIndex = slides.length - 1;
+    showSlide(slideIndex);
+    resetAutoSlide();
+}
+
+function currentSlide(n) {
+    clearInterval(slideTimer);
+    slideIndex = n;
+    showSlide(slideIndex);
+    resetAutoSlide(); // Ensures the slideshow continues after manual selection
+}
+
+// Add event listeners to dots
+document.querySelectorAll(".dot").forEach((dot, index) => {
+    dot.addEventListener("click", () => currentSlide(index));
+});
+
+// Reset the auto-slide timer
+function resetAutoSlide() {
+    clearInterval(slideTimer);
+    slideTimer = setInterval(autoSlide, 3000);
+}
+
+// Auto-slide function
+function autoSlide() {
+    slideIndex = (slideIndex + 1) % slides.length;
+    showSlide(slideIndex);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => currentSlide(index));
+    });
+});
+
+// Event listeners for navigation arrows
+nextButton.addEventListener("click", () => changeSlide(1));
+prevButton.addEventListener("click", () => changeSlide(-1));
+
+// Initialize slideshow
+showSlide(slideIndex);
+slideTimer = setInterval(autoSlide, 3000);
+
 
 // Project Search
 const searchInput = document.getElementById("search");
@@ -37,7 +102,13 @@ searchInput.addEventListener("keyup", () => {
     let projects = document.querySelectorAll(".project");
     projects.forEach(project => {
         let projectName = project.getAttribute("data-name").toLowerCase();
-        project.style.display = projectName.includes(filter) ? "block" : "none";
+        if (projectName.includes(filter)) {
+            project.style.display = "flex"; // Keep flex alignment
+            project.style.justifyContent = "center"; // Ensure text stays centered
+            project.style.alignItems = "center";
+        } else {
+            project.style.display = "none";
+        }
     });
 });
 
@@ -60,3 +131,19 @@ contactForm.addEventListener("submit", function(event) {
     document.getElementById("confirmation-message").style.display = "block";
     contactForm.reset();
 });
+
+// Scroll to Top Button
+const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+window.onscroll = function() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollToTopBtn.classList.add('show');
+    } else {
+        scrollToTopBtn.classList.remove('show');
+    }
+};
+
+function scrollToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
