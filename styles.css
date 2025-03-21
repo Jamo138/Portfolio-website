@@ -309,6 +309,53 @@ h2::after {
     background: #6c9ce8;
 }
 
+/* Blog Posts */
+.blog-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.blog-post {
+    background: #282828;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.blog-post:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
+}
+
+.blog-post h3 {
+    font-size: 1.5rem;
+    color: #8ab4f8;
+    margin-bottom: 10px;
+}
+
+.blog-post p {
+    font-size: 1rem;
+    color: #ddd;
+    margin-bottom: 10px;
+}
+
+.blog-post a {
+    font-size: 1rem;
+    color: #8ab4f8;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.blog-post a:hover {
+    color: #6c9ce8;
+}
+
 /* Contact Section */
 .contact {
     background: #222;
@@ -439,6 +486,10 @@ footer {
     .contact form {
         width: 80%;
     }
+
+    .contact textarea {
+        width: 100%; /* Adjust width for smaller screens */
+    }
 }
 
 @media (max-width: 768px) {
@@ -477,6 +528,10 @@ footer {
 
     .contact form {
         width: 90%;
+    }
+
+    .contact textarea {
+        width: 100%; /* Adjust width for smaller screens */
     }
 
     nav {
@@ -529,6 +584,10 @@ footer {
 
     .contact form {
         width: 100%;
+    }
+
+    .contact textarea {
+        width: 100%; /* Adjust width for smaller screens */
     }
 
     nav {

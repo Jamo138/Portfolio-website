@@ -2,6 +2,7 @@
 const textArray = ["Hi, My Name Is Michael", "Welcome To My Portfolio"];
 let textIndex = 0;
 let charIndex = 0;
+
 function typeEffect() {
     if (charIndex < textArray[textIndex].length) {
         document.getElementById("typing-effect").textContent += textArray[textIndex].charAt(charIndex);
@@ -16,6 +17,8 @@ function typeEffect() {
         }, 2000);
     }
 }
+
+// Add typing effect class and start the effect
 document.getElementById("typing-effect").classList.add("typing-font");
 typeEffect();
 
