@@ -4,24 +4,20 @@ let textIndex = 0;
 let charIndex = 0;
 
 const typeEffect = () => {
-    // Check if there are more characters to type
     if (charIndex < textArray[textIndex].length) {
-        // Add the next character to the typing effect element
         document.getElementById("typing-effect").textContent += textArray[textIndex].charAt(charIndex);
         charIndex++;
-        setTimeout(typeEffect, 100); // Type the next character after 100ms
+        setTimeout(typeEffect, 100);
     } else {
-        // Wait for 2 seconds before clearing the text and starting the next string
         setTimeout(() => {
             document.getElementById("typing-effect").textContent = "";
             charIndex = 0;
-            textIndex = (textIndex + 1) % textArray.length; // Loop back to the first string
+            textIndex = (textIndex + 1) % textArray.length;
             typeEffect();
         }, 2000);
     }
 };
 
-// Add typing effect class and start the effect
 document.getElementById("typing-effect").classList.add("typing-font");
 typeEffect();
 
@@ -32,13 +28,7 @@ searchInput.addEventListener("keyup", () => {
     const projects = document.querySelectorAll(".project");
     projects.forEach(project => {
         const projectName = project.getAttribute("data-name").toLowerCase();
-        if (projectName.includes(filter)) {
-            project.style.display = "flex"; // Keep flex alignment
-            project.style.justifyContent = "center"; // Ensure text stays centered
-            project.style.alignItems = "center";
-        } else {
-            project.style.display = "none";
-        }
+        project.style.display = projectName.includes(filter) ? "flex" : "none";
     });
 });
 
@@ -66,232 +56,287 @@ contactForm.addEventListener("submit", event => {
 const scrollToTopBtn = document.getElementById('scrollToTopBtn');
 
 window.onscroll = () => {
-    // Show or hide the scroll to top button based on scroll position
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        scrollToTopBtn.classList.add('show');
-    } else {
-        scrollToTopBtn.classList.remove('show');
-    }
+    scrollToTopBtn.classList.toggle('show', document.body.scrollTop > 20 || document.documentElement.scrollTop > 20);
 };
 
 const scrollToTop = () => {
-    // Scroll to the top of the page
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 };
 
-// Fetch Data Function
-const fetchData = async (type) => {
+const fetchData = async () => {
     try {
-        // Fetch data based on the selected type (projects or blog posts)
-        const response = await fetch(type === 'projects' ? 'https://jsonplaceholder.typicode.com/posts' : 'https://jsonplaceholder.typicode.com/comments');
-        // Check if the response is not ok (status code is not in the range 200-299)
+        const response = await fetch('data.json');
         if (!response.ok) {
-            throw new Error(`Failed to fetch data: ${response.statusText}`);
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
+        console.log(data);
 
-        data[0].title = "🚀 Manually Updated Post Title!";
-        data[2].title = "🚀 Manually Updated Post Title!";
-
-        console.log('Fetched data:', data); // Debug log
-        return data.slice(0, 20); // Limit to 20 data points
-    } catch (error) {
-        // Log the error to the console and show an alert to the user
-        console.error('Error fetching data:', error);
-        alert('Failed to fetch data. Please try again later.');
-        return [];
-    }
-};
-
-// Filter Data by Date
-const filterDataByDate = (data, startDate, endDate) => {
-    return data.filter(item => {
-        const itemDate = new Date(item.date);
-        return itemDate >= new Date(startDate) && itemDate <= new Date(endDate);
-    });
-};
-
-// Render Data Table
-const renderTable = (data) => {
-    console.log('Rendering table with data:', data); // Debug log
-    const tableBody = document.querySelector('#dataTable tbody');
-    tableBody.innerHTML = '';
-    data.forEach(item => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${item.id}</td>
-            <td>${item.title || item.name}</td>
-            <td>${item.body}</td>
-        `;
-        tableBody.appendChild(row);
-    });
-};
-
-// Render Charts
-const renderCharts = (data) => {
-    console.log('Rendering charts with data:', data); // Debug log
-    const ctxLine = document.getElementById('lineChart').getContext('2d');
-    const ctxBar = document.getElementById('barChart').getContext('2d');
-    const ctxPie = document.getElementById('pieChart').getContext('2d');
-
-    const labels = data.map(item => item.id);
-    const values = data.map(item => item.id % 100);
-
-    // Line Chart
-    const lineChart = new Chart(ctxLine, {
-        type: 'line',
-        data: {
-            labels: labels,
+        // Line Chart (Project Progress Over Time)
+        const lineChartData = {
+            labels: data.projects.map(project => project.title),
             datasets: [{
                 label: 'Project Progress',
-                data: values,
+                data: data.projects.map(project => project.progress),
+                fill: false,
                 borderColor: '#8ab4f8',
-                backgroundColor: 'rgba(138, 180, 248, 0.2)',
-                fill: true
+                backgroundColor: '#8ab4f8',
+                tension: 0.1
             }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Project ID'
+        };
+
+        const lineChartConfig = {
+            type: 'line',
+            data: lineChartData,
+            options: {
+                responsive: true,
+                scales: {
+                    x: { 
+                        title: { display: true, text: '', color: '#ddd' },
+                        ticks: { color: '#ddd' }
+                    },
+                    y: { 
+                        title: { display: true, text: 'Progress (%)', color: '#ddd' }, 
+                        min: 0, 
+                        max: 100,
+                        ticks: { color: '#ddd' }
                     }
                 },
-                y: {
-                    title: {
-                        display: true,
-                        text: 'Progress'
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#ddd'
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => `Progress: ${context.raw}%`
+                        }
+                    }
+                },
+                onClick: (e, elements) => {
+                    if (elements.length > 0) {
+                        const index = elements[0].index;
+                        alert(`Project: ${lineChartData.labels[index]}\nProgress: ${lineChartData.datasets[0].data[index]}%`);
                     }
                 }
-            },
-            plugins: {
-                tooltip: {
-                    enabled: true // Enable tooltips
-                }
-            },
-            onClick: (event, elements) => {
-                if (elements.length > 0) {
-                    const elementIndex = elements[0].index;
-                    const elementData = data[elementIndex];
-                    alert(`Clicked on Project ID: ${elementData.id}\nTitle: ${elementData.title || elementData.name}`);
-                }
             }
-        }
-    });
+        };
 
-    // Bar Chart
-    const barChart = new Chart(ctxBar, {
-        type: 'bar',
-        data: {
-            labels: labels,
+        const lineChart = new Chart(document.getElementById('lineChart'), lineChartConfig);
+
+        // Bar Chart (Blog Post Views Comparison)
+        const barChartData = {
+            labels: data.blogPosts.map(post => post.title),
             datasets: [{
                 label: 'Blog Post Views',
-                data: values,
-                backgroundColor: 'rgba(138, 180, 248, 0.8)',
+                data: data.blogPosts.map(post => post.views),
+                backgroundColor: 'rgba(138, 180, 248, 0.2)',
                 borderColor: '#8ab4f8',
                 borderWidth: 1
             }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Blog Post ID'
+        };
+
+        const barChartConfig = {
+            type: 'bar',
+            data: barChartData,
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        ticks: { color: '#ddd' }
+                    },
+                    y: { 
+                        beginAtZero: true, 
+                        title: { display: true, text: 'Views', color: '#ddd' },
+                        ticks: { color: '#ddd' }
                     }
                 },
-                y: {
-                    title: {
-                        display: true,
-                        text: 'Views'
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#ddd'
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => `Views: ${context.raw}`
+                        }
+                    }
+                },
+                onClick: (e, elements) => {
+                    if (elements.length > 0) {
+                        const index = elements[0].index;
+                        alert(`Blog Post: ${barChartData.labels[index]}\nViews: ${barChartData.datasets[0].data[index]}`);
                     }
                 }
-            },
-            plugins: {
-                tooltip: {
-                    enabled: true // Enable tooltips
-                }
-            },
-            onClick: (event, elements) => {
-                if (elements.length > 0) {
-                    const elementIndex = elements[0].index;
-                    const elementData = data[elementIndex];
-                    alert(`Clicked on Blog Post ID: ${elementData.id}\nTitle: ${elementData.title || elementData.name}`);
-                }
             }
-        }
-    });
+        };
 
-    // Pie Chart
-    const pieChart = new Chart(ctxPie, {
-        type: 'pie',
-        data: {
-            labels: labels.slice(0, 5),
+        const barChart = new Chart(document.getElementById('barChart'), barChartConfig);
+
+        // Pie Chart (Top Blog Posts by Number of Comments)
+        const commentsCount = data.comments.reduce((acc, comment) => {
+            acc[comment.postId] = (acc[comment.postId] || 0) + 1;
+            return acc;
+        }, {});
+
+        const pieChartData = {
+            labels: data.blogPosts.map(post => post.title),
             datasets: [{
-                data: values.slice(0, 5),
-                backgroundColor: ['#8ab4f8', '#a0c4ff', '#6c9ce8', '#4a8cf8', '#2a6cf8']
+                label: 'Number of Comments',
+                data: data.blogPosts.map(post => commentsCount[post.id] || 0),
+                backgroundColor: ['#8ab4f8', '#6c9ce8', '#4e84d8', '#306cc8'],
             }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Top 5 Data Points'
+        };
+
+        const pieChartConfig = {
+            type: 'pie',
+            data: pieChartData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        align: 'center',
+                        labels: {
+                            color: '#ddd',
+                            boxWidth: 20, // Adjust box width to ensure text is not cut off
+                            padding: 20 // Add padding to ensure text is fully visible
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Blog Post Comments',
+                        color: '#ddd',
+                        font: {
+                            weight: 'normal'
+                        },
+                        padding: {
+                            top: 10,
+                            bottom: 30
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => `Comments: ${context.raw}`
+                        }
+                    }
                 },
-                tooltip: {
-                    enabled: true // Enable tooltips
-                }
-            },
-            onClick: (event, elements) => {
-                if (elements.length > 0) {
-                    const elementIndex = elements[0].index;
-                    const elementData = data[elementIndex];
-                    alert(`Clicked on Data Point ID: ${elementData.id}\nTitle: ${elementData.title || elementData.name}`);
+                layout: {
+                    padding: {
+                        right: 20
+                    }
+                },
+                onClick: (e, elements) => {
+                    if (elements.length > 0) {
+                        const index = elements[0].index;
+                        alert(`Blog Post: ${pieChartData.labels[index]}\nComments: ${pieChartData.datasets[0].data[index]}`);
+                    }
                 }
             }
-        }
-    });
+        };
 
-    return { lineChart, barChart, pieChart };
-};
+        const pieChart = new Chart(document.getElementById('pieChart'), pieChartConfig);
 
-// Initialize Dashboard
-const initDashboard = async () => {
-    const dataType = document.getElementById('data-type').value;
-    const startDate = document.getElementById('start-date').value;
-    const endDate = document.getElementById('end-date').value;
-    let data = await fetchData(dataType);
-    if (startDate && endDate) {
-        data = filterDataByDate(data, startDate, endDate);
+        // Populate data table
+        const dataTableBody = document.querySelector('#dataTable tbody');
+        const filterBtn = document.getElementById('filter-btn');
+        const dataTypeSelect = document.getElementById('data-type');
+        const startDateInput = document.getElementById('start-date');
+        const endDateInput = document.getElementById('end-date');
+
+        const populateTable = (filteredData) => {
+            dataTableBody.innerHTML = ''; // Clear existing table data
+
+            filteredData.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.id}</td>
+                    <td>${item.title || `Comment on Post ID: ${item.postId}`}</td>
+                    <td>${item.progress ? `Progress: ${item.progress}%` : item.views ? `Views: ${item.views}` : item.content}</td>
+                `;
+                dataTableBody.appendChild(row);
+            });
+        };
+
+        const filterData = () => {
+            const dataType = dataTypeSelect.value;
+            const startDate = new Date(startDateInput.value);
+            const endDate = new Date(endDateInput.value);
+            let filteredData = [];
+
+            if (dataType === 'projects') {
+                filteredData = data.projects.filter(project => {
+                    const projectDate = new Date(project.date);
+                    return (!startDateInput.value || projectDate >= startDate) && (!endDateInput.value || projectDate <= endDate);
+                });
+            } else if (dataType === 'blog') {
+                filteredData = data.blogPosts.filter(post => {
+                    const postDate = new Date(post.date);
+                    return (!startDateInput.value || postDate >= startDate) && (!endDateInput.value || postDate <= endDate);
+                });
+            } else if (dataType === 'comments') {
+                filteredData = data.comments.filter(comment => {
+                    const commentDate = new Date(comment.date);
+                    return (!startDateInput.value || commentDate >= startDate) && (!endDateInput.value || commentDate <= endDate);
+                });
+            }
+
+            populateTable(filteredData);
+
+            // Update charts to update without refreshing the page
+            if (dataType === 'projects') {
+                lineChart.data.labels = filteredData.map(project => project.title);
+                lineChart.data.datasets[0].data = filteredData.map(project => project.progress);
+                lineChart.update();
+            } else if (dataType === 'blog') {
+                barChart.data.labels = filteredData.map(post => post.title);
+                barChart.data.datasets[0].data = filteredData.map(post => post.views);
+                barChart.update();
+            } else if (dataType === 'comments') {
+                const commentsCount = filteredData.reduce((acc, comment) => {
+                    acc[comment.postId] = (acc[comment.postId] || 0) + 1;
+                    return acc;
+                }, {});
+                pieChart.data.labels = data.blogPosts.map(post => post.title);
+                pieChart.data.datasets[0].data = data.blogPosts.map(post => commentsCount[post.id] || 0);
+                pieChart.update();
+            }
+        };
+
+        filterBtn.addEventListener('click', filterData);
+
+        // Initial population of the table
+        filterData();
+
+        // Make the table interactive
+        const dataTable = document.getElementById('dataTable');
+        const headers = dataTable.querySelectorAll('th');
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                const tableBody = dataTable.querySelector('tbody');
+                const rows = Array.from(tableBody.querySelectorAll('tr'));
+                const index = Array.from(headers).indexOf(header);
+                const ascending = header.classList.contains('asc');
+                header.classList.toggle('asc', !ascending);
+                header.classList.toggle('desc', ascending);
+
+                rows.sort((a, b) => {
+                    const cellA = a.children[index].textContent.trim();
+                    const cellB = b.children[index].textContent.trim();
+                    return ascending ? cellB.localeCompare(cellA) : cellA.localeCompare(cellB);
+                });
+
+                rows.forEach(row => tableBody.appendChild(row));
+            });
+        });
+    } catch (error) {
+        console.error('Error loading the data:', error);
+        alert('Failed to load data. Please try again later.');
     }
-    renderTable(data);
-    const charts = renderCharts(data);
-    return charts;
 };
 
-// Event Listener for Data Type Change
-document.getElementById('data-type').addEventListener('change', async () => {
-    const charts = await initDashboard();
-    charts.lineChart.update();
-    charts.barChart.update();
-    charts.pieChart.update();
-});
+fetchData();
 
-// Event Listener for Filter Button
-document.getElementById('filter-btn').addEventListener('click', async () => {
-    const charts = await initDashboard();
-    charts.lineChart.update();
-    charts.barChart.update();
-    charts.pieChart.update();
-});
-
-// Initial Load
-initDashboard(); // Load the dashboard data when the page loads

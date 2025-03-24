@@ -18,6 +18,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#blog">Blog</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -51,9 +52,10 @@
         <h2>Projects</h2>
         <input type="text" id="search" placeholder="Search projects...">
         <div class="project-list">
-            <div class="project" data-name="Project 1">Project 1</div>
-            <div class="project" data-name="Project 2">Project 2</div>
-            <div class="project" data-name="Project 3">Project 3</div>
+            <div class="project" data-name="Project Alpha">Project Alpha</div>
+            <div class="project" data-name="Project Beta">Project Beta</div>
+            <div class="project" data-name="Project Gamma">Project Gamma</div>
+            <div class="project" data-name="Project Delta">Project Delta</div>
         </div>
     </section>
     
@@ -63,20 +65,26 @@
         <div class="blog-posts">
             <!-- Blog Post 1 -->
             <div class="blog-post">
-                <h3>Understanding JavaScript Closures</h3>
-                <p>A deep dive into one of JavaScript's most powerful features: closures. Learn how they work and how to use them effectively in your code.</p>
+                <h3>JavaScript Basics</h3>
+                <p>A deep dive into JavaScript basics.</p>
                 <a href="blog/understanding-javascript-closures.html">Read More</a>
             </div>
             <!-- Blog Post 2 -->
             <div class="blog-post">
-                <h3>Getting Started with React</h3>
-                <p>React is a popular JavaScript library for building user interfaces. This post covers the basics of getting started with React and building your first component.</p>
+                <h3>Understanding APIs</h3>
+                <p>An introduction to APIs and how they work.</p>
                 <a href="blog/getting-started-with-react.html">Read More</a>
             </div>
             <!-- Blog Post 3 -->
             <div class="blog-post">
-                <h3>CSS Grid Layout: A Comprehensive Guide</h3>
-                <p>CSS Grid Layout is a powerful layout system available in CSS. This guide covers everything you need to know to get started with CSS Grid Layout.</p>
+                <h3>CSS Grid vs Flexbox</h3>
+                <p>Comparing CSS Grid and Flexbox for layout design.</p>
+                <a href="blog/css-grid-layout-guide.html">Read More</a>
+            </div>
+             <!-- Blog Post 4 -->
+             <div class="blog-post">
+                <h3>React Hooks Deep Dive</h3>
+                <p>Exploring React Hooks in detail.</p>
                 <a href="blog/css-grid-layout-guide.html">Read More</a>
             </div>
         </div>
@@ -96,6 +104,7 @@
             <select id="data-type">
                 <option value="projects">Projects</option>
                 <option value="blog">Blog Posts</option>
+                <option value="comments">Comments</option>
             </select>
             <label for="start-date">Start Date:</label>
             <input type="date" id="start-date">

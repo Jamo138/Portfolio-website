@@ -309,6 +309,19 @@ h2::after {
     background: #6c9ce8;
 }
 
+#comment-list {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 30px; /* Align with the comment input box */
+}
+
+#comment-list li {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
 /* Blog Posts */
 .blog-posts {
     display: flex;
@@ -460,6 +473,34 @@ footer {
     color: #ddd;
 }
 
+/* Interactive Table */
+.data-table {
+    overflow-x: auto;
+    max-height: 400px; /* Set a max height for the table */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.data-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th, .data-table td {
+    padding: 10px;
+    border: 1px solid #444;
+    text-align: left;
+    cursor: pointer;
+}
+
+.data-table th.asc::after {
+    content: ' ▲';
+}
+
+.data-table th.desc::after {
+    content: ' ▼';
+}
+
+/* Filter Options */
 .filters {
     margin-bottom: 20px;
     display: flex;
@@ -502,23 +543,6 @@ footer {
 .charts canvas {
     max-width: 300px;
     max-height: 300px;
-}
-
-.data-table {
-    overflow-x: auto;
-    max-height: 400px; /* Set a max height for the table */
-    overflow-y: auto; /* Enable vertical scrolling */
-}
-
-.data-table table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.data-table th, .data-table td {
-    padding: 10px;
-    border: 1px solid #444;
-    text-align: left;
 }
 
 /* Responsive Design - Ensuring the site works well on smaller screens */
@@ -672,4 +696,65 @@ footer {
     .nav-links li {
         margin: 10px 0;
     }
+}
+
+/* Interactive Table */
+.data-table {
+    overflow-x: auto;
+    max-height: 400px; /* Set a max height for the table */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.data-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th, .data-table td {
+    padding: 10px;
+    border: 1px solid #444;
+    text-align: left;
+    cursor: pointer;
+}
+
+.data-table th.asc::after {
+    content: ' ▲';
+}
+
+.data-table th.desc::after {
+    content: ' ▼';
+}
+
+/* Filter Options */
+.filters {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filters label {
+    margin-right: 10px;
+}
+
+.filters select, .filters input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background: #333;
+    color: white;
+}
+
+#filter-btn {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    background: #8ab4f8;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#filter-btn:hover {
+    background: #6c9ce8;
 }
