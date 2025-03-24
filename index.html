@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jamo's Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script defer src="js/script.js"></script>
 </head>
 <body>
+    <!-- Header section with navigation -->
     <header>
         <nav>
             <div class="logo">My Portfolio</div>
@@ -21,6 +23,7 @@
         </nav>
     </header>
     
+    <!-- Home section with hero content -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1 id="typing-effect"></h1>
@@ -28,6 +31,7 @@
         </div>
     </section>
     
+    <!-- About section with personal information -->
     <section id="about" class="about">
         <h2>About Me</h2>
         <div class="about-container">
@@ -42,6 +46,7 @@
         </div>
     </section>
     
+    <!-- Projects section with search functionality -->
     <section id="projects" class="projects">
         <h2>Projects</h2>
         <input type="text" id="search" placeholder="Search projects...">
@@ -52,6 +57,7 @@
         </div>
     </section>
     
+    <!-- Blog section with blog posts and comments -->
     <section id="blog" class="blog">
         <h2>Blog</h2>
         <div class="blog-posts">
@@ -82,6 +88,41 @@
         </div>
     </section>
     
+    <!-- Dashboard section with filters, charts, and data table -->
+    <section id="dashboard" class="dashboard">
+        <h2>Dashboard</h2>
+        <div class="filters">
+            <label for="data-type">Data Type:</label>
+            <select id="data-type">
+                <option value="projects">Projects</option>
+                <option value="blog">Blog Posts</option>
+            </select>
+            <label for="start-date">Start Date:</label>
+            <input type="date" id="start-date">
+            <label for="end-date">End Date:</label>
+            <input type="date" id="end-date">
+            <button id="filter-btn">Filter</button>
+        </div>
+        <div class="charts">
+            <canvas id="lineChart"></canvas>
+            <canvas id="barChart"></canvas>
+            <canvas id="pieChart"></canvas>
+        </div>
+        <div class="data-table">
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </section>
+    
+    <!-- Contact section with contact form -->
     <section id="contact" class="contact">
         <h2>Contact Me</h2>
         <form id="contact-form">
@@ -93,8 +134,10 @@
         <p id="confirmation-message" style="display:none;">Thank you for your message!</p>
     </section>
     
+    <!-- Scroll to top button -->
     <button id="scrollToTopBtn" onclick="scrollToTop()">&#8679;</button>
     
+    <!-- Footer section -->
     <footer>
         <p>&copy; 2025 Jamo. All rights reserved.</p>
     </footer>

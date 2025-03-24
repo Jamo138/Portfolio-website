@@ -451,6 +451,76 @@ footer {
     opacity: 1;
 }
 
+/* Dashboard Section */
+.dashboard {
+    padding: 60px 10%;
+    background: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: #ddd;
+}
+
+.filters {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filters label {
+    margin-right: 10px;
+}
+
+.filters select, .filters input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background: #333;
+    color: white;
+}
+
+#filter-btn {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    background: #8ab4f8;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#filter-btn:hover {
+    background: #6c9ce8;
+}
+
+.charts {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.charts canvas {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.data-table {
+    overflow-x: auto;
+    max-height: 400px; /* Set a max height for the table */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.data-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th, .data-table td {
+    padding: 10px;
+    border: 1px solid #444;
+    text-align: left;
+}
+
 /* Responsive Design - Ensuring the site works well on smaller screens */
 @media (max-width: 1200px) {
     .hero h1 {
@@ -603,4 +673,3 @@ footer {
         margin: 10px 0;
     }
 }
-
