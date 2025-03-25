@@ -1,24 +1,41 @@
 // Typing Effect
-const textArray = ["Hi, My Name Is Michael", "Welcome To My Portfolio"];
+const typingEffectElement = document.getElementById("typing-effect");
+const typingEffectElement2 = document.getElementById("typing-effect-2");
+const textArray = JSON.parse(typingEffectElement.getAttribute("data-text"));
+const textArray2 = JSON.parse(typingEffectElement2.getAttribute("data-text"));
 let textIndex = 0;
 let charIndex = 0;
+let charIndex2 = 0;
 
 const typeEffect = () => {
     if (charIndex < textArray[textIndex].length) {
-        document.getElementById("typing-effect").textContent += textArray[textIndex].charAt(charIndex);
+        typingEffectElement.textContent += textArray[textIndex].charAt(charIndex);
         charIndex++;
         setTimeout(typeEffect, 100);
     } else {
+        setTimeout(typeEffect2, 2000);
+    }
+};
+
+const typeEffect2 = () => {
+    if (charIndex2 < textArray2[textIndex].length) {
+        typingEffectElement2.textContent += textArray2[textIndex].charAt(charIndex2);
+        charIndex2++;
+        setTimeout(typeEffect2, 100);
+    } else {
         setTimeout(() => {
-            document.getElementById("typing-effect").textContent = "";
+            typingEffectElement.textContent = "";
+            typingEffectElement2.textContent = "";
             charIndex = 0;
+            charIndex2 = 0;
             textIndex = (textIndex + 1) % textArray.length;
             typeEffect();
         }, 2000);
     }
 };
 
-document.getElementById("typing-effect").classList.add("typing-font");
+typingEffectElement.classList.add("typing-font");
+typingEffectElement2.classList.add("typing-font");
 typeEffect();
 
 // Project Search
@@ -29,6 +46,26 @@ searchInput.addEventListener("keyup", () => {
     projects.forEach(project => {
         const projectName = project.getAttribute("data-name").toLowerCase();
         project.style.display = projectName.includes(filter) ? "flex" : "none";
+    });
+});
+
+// Modal Functions
+const openModal = (modalId) => {
+    document.getElementById(modalId).style.display = 'block';
+};
+
+const closeModal = (modalId) => {
+    document.getElementById(modalId).style.display = 'none';
+};
+
+// Blog Search
+const blogSearchInput = document.getElementById("blog-search");
+blogSearchInput.addEventListener("keyup", () => {
+    const filter = blogSearchInput.value.toLowerCase();
+    const blogPosts = document.querySelectorAll(".blog-post");
+    blogPosts.forEach(post => {
+        const postTitle = post.querySelector("h3").textContent.toLowerCase();
+        post.style.display = postTitle.includes(filter) ? "block" : "none";
     });
 });
 
@@ -64,6 +101,7 @@ const scrollToTop = () => {
     document.documentElement.scrollTop = 0;
 };
 
+// Dashboard
 const fetchData = async () => {
     try {
         const response = await fetch('data.json');
@@ -202,8 +240,8 @@ const fetchData = async () => {
                         align: 'center',
                         labels: {
                             color: '#ddd',
-                            boxWidth: 20, // Adjust box width to ensure text is not cut off
-                            padding: 20 // Add padding to ensure text is fully visible
+                            boxWidth: 20, 
+                            padding: 20 
                         }
                     },
                     title: {

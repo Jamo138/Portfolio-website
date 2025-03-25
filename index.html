@@ -27,7 +27,8 @@
     <!-- Home section with hero content -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1 id="typing-effect"></h1>
+            <h1 id="typing-effect" data-text='["Hi, my name Is Michael"]'></h1>
+            <h1 id="typing-effect-2" data-text='["I am an aspiring Software Developer"]'></h1>
             <p>Exploring the Intersection of Technology and Creativity</p>
         </div>
     </section>
@@ -52,16 +53,58 @@
         <h2>Projects</h2>
         <input type="text" id="search" placeholder="Search projects...">
         <div class="project-list">
-            <div class="project" data-name="Project Alpha">Project Alpha</div>
-            <div class="project" data-name="Project Beta">Project Beta</div>
-            <div class="project" data-name="Project Gamma">Project Gamma</div>
-            <div class="project" data-name="Project Delta">Project Delta</div>
+            <div class="project" data-name="Project Alpha" onclick="openModal('projectAlphaModal')">Project Alpha</div>
+            <div class="project" data-name="Project Beta" onclick="openModal('projectBetaModal')">Project Beta</div>
+            <div class="project" data-name="Project Gamma" onclick="openModal('projectGammaModal')">Project Gamma</div>
+            <div class="project" data-name="Project Delta" onclick="openModal('projectDeltaModal')">Project Delta</div>
         </div>
     </section>
+
+    <!-- Modals for Projects -->
+    <div id="projectAlphaModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('projectAlphaModal')">&times;</span>
+            <h2>Project Alpha</h2>
+            <img src="assets/project-alpha.jpg" alt="Project Alpha Image">
+            <p>Description of Project Alpha.</p>
+            <p>Details about Project Alpha.</p>
+        </div>
+    </div>
+
+    <div id="projectBetaModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('projectBetaModal')">&times;</span>
+            <h2>Project Beta</h2>
+            <img src="assets/project-beta.jpg" alt="Project Beta Image">
+            <p>Description of Project Beta.</p>
+            <p>Details about Project Beta.</p>
+        </div>
+    </div>
+
+    <div id="projectGammaModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('projectGammaModal')">&times;</span>
+            <h2>Project Gamma</h2>
+            <img src="assets/project-gamma.jpg" alt="Project Gamma Image">
+            <p>Description of Project Gamma.</p>
+            <p>Details about Project Gamma.</p>
+        </div>
+    </div>
+
+    <div id="projectDeltaModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('projectDeltaModal')">&times;</span>
+            <h2>Project Delta</h2>
+            <img src="assets/project-delta.jpg" alt="Project Delta Image">
+            <p>Description of Project Delta.</p>
+            <p>Details about Project Delta.</p>
+        </div>
+    </div>
     
     <!-- Blog section with blog posts and comments -->
     <section id="blog" class="blog">
         <h2>Blog</h2>
+        <input type="text" id="blog-search" placeholder="Search blog posts...">
         <div class="blog-posts">
             <!-- Blog Post 1 -->
             <div class="blog-post">

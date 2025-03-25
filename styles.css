@@ -88,6 +88,10 @@ h2::after {
     color: #8ab4f8; 
 }
 
+#typing-effect-2 {
+    margin-top: 10px; /* Add some space between the two typing effects */
+}
+
 /* Hero Section */
 .hero {
     position: relative;
@@ -254,6 +258,51 @@ h2::after {
     background: #8ab4f8;
 }
 
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: #ddd;
+}
+
+.modal-content img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 /* Search Project Box */
 #search {
     width: 20%; /* Reduced width */
@@ -270,6 +319,71 @@ h2::after {
 
 #search:focus {
     border: 1px solid #8ab4f8;
+}
+
+/* Blog Search Box */
+#blog-search {
+    width: 20%; /* Reduced width */
+    padding: 10px;
+    font-size: 1rem;
+    margin-left: 30px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background: #333;
+    color: white;
+    margin-bottom: 20px;
+    transition: border 0.3s;
+}
+
+#blog-search:focus {
+    border: 1px solid #8ab4f8;
+}
+
+/* Blog Posts */
+.blog-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.blog-post {
+    background: #282828;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.blog-post:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
+}
+
+.blog-post h3 {
+    font-size: 1.5rem;
+    color: #8ab4f8;
+    margin-bottom: 10px;
+}
+
+.blog-post p {
+    font-size: 1rem;
+    color: #ddd;
+    margin-bottom: 10px;
+}
+
+.blog-post a {
+    font-size: 1rem;
+    color: #8ab4f8;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.blog-post a:hover {
+    color: #6c9ce8;
 }
 
 /* Leave a Comment Box */
@@ -320,53 +434,6 @@ h2::after {
     padding: 10px;
     border-radius: 6px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Blog Posts */
-.blog-posts {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-    background: #1a1a1a;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.blog-post {
-    background: #282828;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.blog-post:hover {
-    transform: scale(1.02);
-    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
-}
-
-.blog-post h3 {
-    font-size: 1.5rem;
-    color: #8ab4f8;
-    margin-bottom: 10px;
-}
-
-.blog-post p {
-    font-size: 1rem;
-    color: #ddd;
-    margin-bottom: 10px;
-}
-
-.blog-post a {
-    font-size: 1rem;
-    color: #8ab4f8;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.blog-post a:hover {
-    color: #6c9ce8;
 }
 
 /* Contact Section */
@@ -545,6 +612,33 @@ footer {
     max-height: 300px;
 }
 
+/* Interactive Table */
+.data-table {
+    overflow-x: auto;
+    max-height: 400px; /* Set a max height for the table */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.data-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th, .data-table td {
+    padding: 10px;
+    border: 1px solid #444;
+    text-align: left;
+    cursor: pointer;
+}
+
+.data-table th.asc::after {
+    content: ' ▲';
+}
+
+.data-table th.desc::after {
+    content: ' ▼';
+}
+
 /* Responsive Design - Ensuring the site works well on smaller screens */
 @media (max-width: 1200px) {
     .hero h1 {
@@ -698,63 +792,3 @@ footer {
     }
 }
 
-/* Interactive Table */
-.data-table {
-    overflow-x: auto;
-    max-height: 400px; /* Set a max height for the table */
-    overflow-y: auto; /* Enable vertical scrolling */
-}
-
-.data-table table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.data-table th, .data-table td {
-    padding: 10px;
-    border: 1px solid #444;
-    text-align: left;
-    cursor: pointer;
-}
-
-.data-table th.asc::after {
-    content: ' ▲';
-}
-
-.data-table th.desc::after {
-    content: ' ▼';
-}
-
-/* Filter Options */
-.filters {
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.filters label {
-    margin-right: 10px;
-}
-
-.filters select, .filters input {
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #444;
-    background: #333;
-    color: white;
-}
-
-#filter-btn {
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: none;
-    background: #8ab4f8;
-    color: white;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-#filter-btn:hover {
-    background: #6c9ce8;
-}
