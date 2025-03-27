@@ -85,6 +85,18 @@ const scrollToTop = () => {
     document.documentElement.scrollTop = 0;
 };
 
+// Theme Toggle
+const themeToggle = document.getElementById("theme-toggle");
+const currentTheme = localStorage.getItem("theme") || "dark";
+
+document.body.classList.toggle("light-theme", currentTheme === "light");
+
+themeToggle.addEventListener("click", () => {
+    const isLightTheme = document.body.classList.toggle("light-theme");
+    localStorage.setItem("theme", isLightTheme ? "light" : "dark");
+    updateChartColors();
+});
+
 // Dashboard
 const fetchData = async () => {
     try {
@@ -354,6 +366,56 @@ const fetchData = async () => {
                 rows.forEach(row => tableBody.appendChild(row));
             });
         });
+
+        // Update chart text colors based on theme
+        const updateChartColors = () => {
+            const isLightTheme = document.body.classList.contains("light-theme");
+            const textColor = isLightTheme ? "#000000" : "#ddd";
+
+            // Update Line Chart
+            lineChart.options.scales.x.ticks.color = textColor;
+            lineChart.options.scales.y.ticks.color = textColor;
+            lineChart.options.scales.y.title.color = textColor;
+            lineChart.options.plugins.legend.labels.color = textColor;
+            lineChart.options.plugins.tooltip.bodyColor = textColor;
+            lineChart.update();
+
+            // Update Bar Chart
+            barChart.options.scales.x.ticks.color = textColor;
+            barChart.options.scales.y.ticks.color = textColor;
+            barChart.options.scales.y.title.color = textColor;
+            barChart.options.plugins.legend.labels.color = textColor;
+            barChart.options.plugins.tooltip.bodyColor = textColor;
+            barChart.update();
+
+            // Update Pie Chart
+            pieChart.options.plugins.legend.labels.color = textColor;
+            pieChart.options.plugins.title.color = textColor;
+            pieChart.options.plugins.tooltip.bodyColor = textColor;
+            pieChart.update();
+        };
+
+        // Call updateChartColors when theme changes
+        themeToggle.addEventListener("click", updateChartColors);
+
+        // Ensure chart text colors are updated on page load
+        if (currentTheme === "light") {
+            updateChartColors();
+        }
+
+        // Adjust dashboard layout for responsiveness
+        const adjustDashboardLayout = () => {
+            const isSmallScreen = window.innerWidth <= 768;
+            pieChart.options.plugins.legend.position = isSmallScreen ? "bottom" : "right";
+            pieChart.update();
+        };
+
+        // Call adjustDashboardLayout on window resize
+        window.addEventListener("resize", adjustDashboardLayout);
+
+        // Ensure layout is adjusted on page load
+        adjustDashboardLayout();
+
     } catch (error) {
         console.error('Error loading the data:', error);
         alert('Failed to load data. Please try again later.');

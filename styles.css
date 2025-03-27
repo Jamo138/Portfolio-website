@@ -10,9 +10,146 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Theme Variables */
+:root {
+    --background-color: #121212;
+    --text-color: #ddd;
+    --nav-background: #1a1a1a;
+    --button-background: #8ab4f8;
+    --button-text-color: white;
+    --card-background: #282828;
+    --input-background: #333;
+    --input-border: #444;
+}
+
+.light-theme {
+    --background-color: #f9f9f9; /* Softer background */
+    --text-color: #333333; /* Darker text for better readability */
+    --nav-background: #ffffff; /* Clean white navigation */
+    --nav-text-color: #333333; /* Darker navigation text */
+    --button-background: #4e84d8; /* Keep button consistent */
+    --button-text-color: #ffffff;
+    --card-background: #ffffff; /* White card background */
+    --input-background: #ffffff; /* White input background */
+    --input-border: #cccccc; /* Subtle input border */
+    --dashboard-background: #ffffff; /* White dashboard background */
+    --dashboard-text-color: #333333; /* Darker dashboard text */
+    --dashboard-border-color: #e0e0e0; /* Subtle dashboard border */
+    --project-text-color: #333333; /* Darker project text */
+    --about-background: #ffffff; /* White About section background */
+    --about-text-color: #333333; /* Darker About section text */
+    --blog-background: #ffffff; /* White Blog section background */
+    --blog-text-color: #333333; /* Darker Blog section text */
+    --blog-summary-color: #555555; /* Slightly lighter summary text */
+    --contact-background: #ffffff; /* White Contact section background */
+    --blog-posts-background: #ffffff; /* White blog-posts background */
+    --filter-background: #ffffff; /* White filter background */
+    --filter-text-color: #333333; /* Darker filter text */
+}
+
+/* Add subtle shadows and rounded corners for a modern look */
+.light-theme .card, 
+.light-theme .project, 
+.light-theme .blog-post, 
+.light-theme .modal-content, 
+.light-theme .data-table table {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 8px; /* Rounded corners */
+}
+
+/* Improve button styling */
+.light-theme button {
+    background: var(--button-background);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.light-theme button:hover {
+    background: #6c9ce8; /* Slightly lighter hover effect */
+    transform: scale(1.05); /* Subtle zoom effect */
+}
+
+/* Enhance input fields */
+.light-theme input, 
+.light-theme textarea, 
+.light-theme select {
+    background: var(--input-background);
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: border-color 0.3s;
+}
+
+.light-theme input:focus, 
+.light-theme textarea:focus, 
+.light-theme select:focus {
+    border-color: var(--button-background); /* Highlight on focus */
+    outline: none;
+}
+
+/* Improve navigation styling */
+.light-theme nav {
+    background: var(--nav-background);
+    color: var(--nav-text-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.light-theme .nav-links a {
+    color: var(--nav-text-color);
+    font-weight: 500; /* Slightly bolder text */
+    transition: color 0.3s;
+}
+
+.light-theme .nav-links a:hover {
+    color: var(--button-background); /* Highlight on hover */
+}
+
+/* Add a soft background to sections */
+.light-theme .section {
+    background: var(--background-color);
+    padding: 40px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Footer styling */
+.light-theme footer {
+    background: var(--nav-background);
+    color: var(--nav-text-color);
+    border-top: 1px solid var(--input-border); /* Subtle border */
+    padding: 20px;
+    text-align: center;
+}
+
+/* Scroll to Top Button */
+.light-theme #scrollToTopBtn {
+    background-color: var(--button-background);
+    color: var(--button-text-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.light-theme #scrollToTopBtn:hover {
+    background-color: #6c9ce8; /* Slightly lighter hover effect */
+}
+
+/* Charts container */
+.light-theme .charts canvas {
+    background: var(--card-background);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
 body {
-    background: #121212;
-    color: #ddd;
+    background: var(--background-color);
+    color: var(--text-color);
     line-height: 1.6;
     display: flex;
     flex-direction: column;
@@ -34,8 +171,8 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 5%;
-    background: #1a1a1a;
-    color: white;
+    background: var(--nav-background);
+    color: var(--nav-text-color); /* Updated to use the new variable */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -49,7 +186,7 @@ nav {
 }
 
 .nav-links a {
-    color: white;
+    color: var(--nav-text-color); /* Updated to use the new variable */
     text-decoration: none;
     font-size: 1rem;
     transition: color 0.3s;
@@ -177,10 +314,10 @@ h2::after {
     align-items: center;
     gap: 15px; /* Reduce gap */
     padding: 30px; /* Reduce padding */
-    background: #1e1e1e;
+    background: var(--about-background); /* Updated to use the new variable */
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    color: #ddd;
+    color: var(--about-text-color); /* Updated to use the new variable */
     text-align: center; /* Centralize text */
 }
 
@@ -203,6 +340,7 @@ h2::after {
 
 .about-text .vision-goals {
     margin-top: 20px; /* Add space before Vision & Goals */
+    color: #8ab4f8; /* Keep "Vision & Goals" text unchanged */
 }
 
 .about-image {
@@ -233,14 +371,14 @@ h2::after {
 .project {
     width: 250px;
     height: 180px;
-    background: #282828;
+    background: var(--card-background);
     display: flex;
     align-items: center;
     text-align: center;
     justify-content: center;
     cursor: pointer;
     border-radius: 12px;
-    color: white;
+    color: var(--project-text-color); /* Updated to use the new variable */
     font-weight: bold;
     font-size: 1.2rem;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -267,7 +405,7 @@ h2::after {
 }
 
 .modal-content {
-    background-color: #1a1a1a;
+    background-color: var(--card-background);
     margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
@@ -275,7 +413,7 @@ h2::after {
     max-width: 600px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    color: #ddd;
+    color: var(--text-color);
 }
 
 .modal-content img {
@@ -304,16 +442,16 @@ h2::after {
     padding: 10px;
     font-size: 1rem;
     margin-left: 30px;
-    border: 1px solid #444;
+    border: 1px solid var(--input-border);
     border-radius: 6px;
-    background: #333;
-    color: white;
+    background: var(--input-background);
+    color: var(--text-color);
     margin-bottom: 20px;
     transition: border 0.3s;
 }
 
 #search:focus {
-    border: 1px solid #8ab4f8;
+    border: 1px solid var(--button-background);
 }
 
 /* Blog Search Box */
@@ -322,35 +460,42 @@ h2::after {
     padding: 10px;
     font-size: 1rem;
     margin-left: 30px;
-    border: 1px solid #444;
+    border: 1px solid var(--input-border);
     border-radius: 6px;
-    background: #333;
-    color: white;
+    background: var(--input-background);
+    color: var(--text-color);
     margin-bottom: 20px;
     transition: border 0.3s;
 }
 
 #blog-search:focus {
-    border: 1px solid #8ab4f8;
+    border: 1px solid var(--button-background);
 }
 
-/* Blog Posts */
+/* Blog Section */
+.blog {
+    background: var(--blog-background); /* Updated to use the new variable */
+    color: var(--blog-text-color); /* Updated to use the new variable */
+}
+
 .blog-posts {
+    background: var(--blog-posts-background); /* Updated to use the new variable */
     display: flex;
     flex-direction: column;
     gap: 20px;
     padding: 20px;
-    background: #1a1a1a;
+    
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .blog-post {
-    background: #282828;
+    background: var(--card-background); /* Ensure blog posts match the light theme */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
+    color: var(--blog-text-color); /* Updated to use the new variable */
 }
 
 .blog-post:hover {
@@ -366,7 +511,7 @@ h2::after {
 
 .blog-post p {
     font-size: 1rem;
-    color: #ddd;
+    color: var(--blog-summary-color); /* Updated to use the new variable */
     margin-bottom: 10px;
 }
 
@@ -387,16 +532,16 @@ h2::after {
     padding: 10px;
     margin-left: 30px;
     font-size: 1rem;
-    border: 1px solid #444;
+    border: 1px solid var(--input-border);
     border-radius: 6px;
-    background: #333;
-    color: white;
+    background: var(--input-background);
+    color: var(--text-color);
     margin-bottom: 10px;
     transition: border 0.3s;
 }
 
 #comment-input:focus {
-    border: 1px solid #8ab4f8;
+    border: 1px solid var(--button-background);
 }
 
 #comments-section h3 {
@@ -433,7 +578,7 @@ h2::after {
 
 /* Contact Section */
 .contact {
-    background: #222;
+    background: var(--contact-background); /* Updated to use the new variable */
     padding: 50px;
     text-align: center;
     color: #ddd;
@@ -453,9 +598,9 @@ h2::after {
 .contact input, .contact textarea {
     padding: 12px;
     font-size: 1.1rem;
-    border: 1px solid #444;
+    border: 1px solid var(--input-border);
     border-radius: 6px;
-    background: #333;
+    background: var(--input-background);
     color: white;
 }
 
@@ -464,9 +609,9 @@ h2::after {
     height: 150px; /* Fixed height */
     padding: 12px;
     font-size: 1.1rem;
-    border: 1px solid #444;
+    border: 1px solid var(--input-border);
     border-radius: 6px;
-    background: #333;
+    background: var(--input-background);
     color: white;
     resize: none; /* Disable resizing */
 }
@@ -494,8 +639,8 @@ h2::after {
 footer {
     text-align: center;
     padding: 20px;
-    background: #181818;
-    color: white;
+    background: var(--nav-background);
+    color: var(--text-color);
     font-size: 1rem;
     display: flex;
     justify-content: center;
@@ -529,10 +674,11 @@ footer {
 /* Dashboard Section */
 .dashboard {
     padding: 60px 10%;
-    background: #1a1a1a;
+    background: var(--dashboard-background);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    color: #ddd;
+    color: var(--dashboard-text-color);
+    border: 2px solid var(--dashboard-border-color);
 }
 
 /* Interactive Table */
@@ -549,7 +695,7 @@ footer {
 
 .data-table th, .data-table td {
     padding: 10px;
-    border: 1px solid #444;
+    border: 1px solid var(--input-border); /* Updated to match input border color */
     text-align: left;
     cursor: pointer;
 }
@@ -578,16 +724,16 @@ footer {
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #444;
-    background: #333;
-    color: white;
+    background: var(--filter-background); /* Updated to use the new variable */
+    color: var(--filter-text-color); /* Updated to use the new variable */
 }
 
 #filter-btn {
     padding: 5px 10px;
     border-radius: 5px;
     border: none;
-    background: #8ab4f8;
-    color: white;
+    background: var(--filter-background); /* Updated to use the new variable */
+    color: var(--filter-text-color); /* Updated to use the new variable */
     cursor: pointer;
     transition: background 0.3s;
 }
@@ -621,7 +767,7 @@ footer {
 
 .data-table th, .data-table td {
     padding: 10px;
-    border: 1px solid #444;
+    border: 1px solid var(--input-border); /* Updated to match input border color */
     text-align: left;
     cursor: pointer;
 }
@@ -632,6 +778,22 @@ footer {
 
 .data-table th.desc::after {
     content: ' ▼';
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+    padding: 10px 20px;
+    background: var(--button-background);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+#theme-toggle:hover {
+    background: var(--button-text-color);
+    color: var(--button-background);
 }
 
 /* Responsive Design - Ensuring the site works well on smaller screens */
@@ -672,6 +834,38 @@ footer {
 
     .contact textarea {
         width: 100%; /* Adjust width for smaller screens */
+    }
+
+    .dashboard {
+        padding: 50px 8%;
+    }
+
+    .filters {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .filters label, 
+    .filters select, 
+    .filters input, 
+    #filter-btn {
+        width: auto;
+        flex: 1 1 200px; /* Flexible width for filters */
+    }
+
+    .charts {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .charts canvas {
+        max-width: 45%; /* Adjust chart size for medium screens */
+        height: auto;
+    }
+
+    .data-table table {
+        font-size: 0.9rem; /* Slightly smaller font for better fit */
     }
 }
 
@@ -729,6 +923,42 @@ footer {
     .nav-links li {
         margin: 10px 0;
     }
+
+    .dashboard {
+        padding: 40px 5%;
+    }
+
+    .filters {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .filters label, 
+    .filters select, 
+    .filters input, 
+    #filter-btn {
+        width: 100%; /* Full width for smaller screens */
+    }
+
+    .charts {
+        flex-direction: column; /* Stack charts vertically */
+        align-items: center;
+        gap: 20px;
+    }
+
+    .charts canvas {
+        max-width: 90%; /* Adjust chart size for smaller screens */
+        height: auto;
+    }
+
+    .data-table {
+        overflow-x: auto; /* Enable horizontal scrolling for tables */
+    }
+
+    .data-table table {
+        font-size: 0.85rem; /* Slightly smaller font for better fit */
+    }
 }
 
 @media (max-width: 480px) {
@@ -784,6 +1014,23 @@ footer {
 
     .nav-links li {
         margin: 10px 0;
+    }
+
+    .dashboard {
+        padding: 30px 3%;
+    }
+
+    .filters {
+        gap: 10px;
+    }
+
+    .charts canvas {
+        max-width: 100%; /* Full width for very small screens */
+        height: auto;
+    }
+
+    .data-table table {
+        font-size: 0.8rem; /* Further reduce font size for very small screens */
     }
 }
 
