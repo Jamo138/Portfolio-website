@@ -1,11 +1,8 @@
 // Typing Effect
 const typingEffectElement = document.getElementById("typing-effect");
-const typingEffectElement2 = document.getElementById("typing-effect-2");
 const textArray = JSON.parse(typingEffectElement.getAttribute("data-text"));
-const textArray2 = JSON.parse(typingEffectElement2.getAttribute("data-text"));
 let textIndex = 0;
 let charIndex = 0;
-let charIndex2 = 0;
 
 const typeEffect = () => {
     if (charIndex < textArray[textIndex].length) {
@@ -13,21 +10,9 @@ const typeEffect = () => {
         charIndex++;
         setTimeout(typeEffect, 100);
     } else {
-        setTimeout(typeEffect2, 2000);
-    }
-};
-
-const typeEffect2 = () => {
-    if (charIndex2 < textArray2[textIndex].length) {
-        typingEffectElement2.textContent += textArray2[textIndex].charAt(charIndex2);
-        charIndex2++;
-        setTimeout(typeEffect2, 100);
-    } else {
         setTimeout(() => {
             typingEffectElement.textContent = "";
-            typingEffectElement2.textContent = "";
             charIndex = 0;
-            charIndex2 = 0;
             textIndex = (textIndex + 1) % textArray.length;
             typeEffect();
         }, 2000);
@@ -35,7 +20,6 @@ const typeEffect2 = () => {
 };
 
 typingEffectElement.classList.add("typing-font");
-typingEffectElement2.classList.add("typing-font");
 typeEffect();
 
 // Project Search

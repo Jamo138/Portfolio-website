@@ -88,10 +88,6 @@ h2::after {
     color: #8ab4f8; 
 }
 
-#typing-effect-2 {
-    margin-top: 10px; /* Add some space between the two typing effects */
-}
-
 /* Hero Section */
 .hero {
     position: relative;
@@ -100,8 +96,7 @@ h2::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to right, rgba(15, 15, 15, 0.8), rgba(28, 28, 28, 0.8)), url("assets/profile1.jpg") center/cover no-repeat;
-    background-blend-mode: overlay; /* Blend the gradient and image */
+    background: url("assets/Background-image.jpg") center/cover no-repeat;
     color: white;
     text-align: center;
     flex-direction: column;
