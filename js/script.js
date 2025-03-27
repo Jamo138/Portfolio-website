@@ -217,10 +217,10 @@ const fetchData = async () => {
         }, {});
 
         const pieChartData = {
-            labels: data.blogPosts.map(post => post.title),
+            labels: Object.keys(commentsCount), // Use post titles as labels
             datasets: [{
                 label: 'Number of Comments',
-                data: data.blogPosts.map(post => commentsCount[post.id] || 0),
+                data: Object.values(commentsCount),
                 backgroundColor: ['#8ab4f8', '#6c9ce8', '#4e84d8', '#306cc8'],
             }]
         };
@@ -288,7 +288,7 @@ const fetchData = async () => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${item.id}</td>
-                    <td>${item.title || `Comment on Post ID: ${item.postId}`}</td>
+                    <td>${item.title || `Comment on Post: ${item.postId}`}</td>
                     <td>${item.progress ? `Progress: ${item.progress}%` : item.views ? `Views: ${item.views}` : item.content}</td>
                 `;
                 dataTableBody.appendChild(row);
@@ -334,8 +334,8 @@ const fetchData = async () => {
                     acc[comment.postId] = (acc[comment.postId] || 0) + 1;
                     return acc;
                 }, {});
-                pieChart.data.labels = data.blogPosts.map(post => post.title);
-                pieChart.data.datasets[0].data = data.blogPosts.map(post => commentsCount[post.id] || 0);
+                pieChart.data.labels = Object.keys(commentsCount);
+                pieChart.data.datasets[0].data = Object.values(commentsCount);
                 pieChart.update();
             }
         };
