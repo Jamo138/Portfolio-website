@@ -10,7 +10,7 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Theme Variables */
+/* Theme designs */
 :root {
     --background-color: #121212;
     --text-color: #ddd;
@@ -47,17 +47,15 @@ html {
     --filter-text-color: #333333; /* Darker filter text */
 }
 
-/* Add subtle shadows and rounded corners for a modern look */
 .light-theme .card, 
 .light-theme .project, 
 .light-theme .blog-post, 
 .light-theme .modal-content, 
 .light-theme .data-table table {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
-/* Improve button styling */
 .light-theme button {
     background: var(--button-background);
     color: var(--button-text-color);
@@ -70,11 +68,10 @@ html {
 }
 
 .light-theme button:hover {
-    background: #6c9ce8; /* Slightly lighter hover effect */
-    transform: scale(1.05); /* Subtle zoom effect */
+    background: #6c9ce8; 
+    transform: scale(1.05); 
 }
 
-/* Enhance input fields */
 .light-theme input, 
 .light-theme textarea, 
 .light-theme select {
@@ -90,40 +87,38 @@ html {
 .light-theme input:focus, 
 .light-theme textarea:focus, 
 .light-theme select:focus {
-    border-color: var(--button-background); /* Highlight on focus */
+    border-color: var(--button-background);
     outline: none;
 }
 
-/* Improve navigation styling */
 .light-theme nav {
     background: var(--nav-background);
     color: var(--nav-text-color);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .light-theme .nav-links a {
     color: var(--nav-text-color);
-    font-weight: 500; /* Slightly bolder text */
+    font-weight: 500;
     transition: color 0.3s;
 }
 
 .light-theme .nav-links a:hover {
-    color: var(--button-background); /* Highlight on hover */
+    color: var(--button-background); 
 }
 
-/* Add a soft background to sections */
 .light-theme .section {
     background: var(--background-color);
     padding: 40px 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
 }
 
 /* Footer styling */
 .light-theme footer {
     background: var(--nav-background);
     color: var(--nav-text-color);
-    border-top: 1px solid var(--input-border); /* Subtle border */
+    border-top: 1px solid var(--input-border);
     padding: 20px;
     text-align: center;
 }
@@ -132,11 +127,11 @@ html {
 .light-theme #scrollToTopBtn {
     background-color: var(--button-background);
     color: var(--button-text-color);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .light-theme #scrollToTopBtn:hover {
-    background-color: #6c9ce8; /* Slightly lighter hover effect */
+    background-color: #6c9ce8;
 }
 
 /* Charts container */
@@ -144,7 +139,7 @@ html {
     background: var(--card-background);
     border-radius: 8px;
     padding: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
 }
 
 body {
@@ -157,7 +152,7 @@ body {
 
 .logo {
     font-size: 1.5rem;
-    font-family: 'Orbitron', sans-serif; /* Changed font family */
+    font-family: 'Orbitron', sans-serif;
     font-weight: bold;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -172,7 +167,7 @@ nav {
     align-items: center;
     padding: 1rem 5%;
     background: var(--nav-background);
-    color: var(--nav-text-color); /* Updated to use the new variable */
+    color: var(--nav-text-color); 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -186,7 +181,7 @@ nav {
 }
 
 .nav-links a {
-    color: var(--nav-text-color); /* Updated to use the new variable */
+    color: var(--nav-text-color); 
     text-decoration: none;
     font-size: 1rem;
     transition: color 0.3s;
@@ -194,6 +189,22 @@ nav {
 
 .nav-links a:hover {
     color: #8ab4f8;
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+    padding: 10px 20px;
+    background: var(--button-background);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+#theme-toggle:hover {
+    background: var(--button-text-color);
+    color: var(--button-background);
 }
 
 /* Section Headers */
@@ -249,11 +260,10 @@ h2::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    background: rgba(0, 0, 0, 0.5); 
     z-index: 1;
 }
 
-/* Ensures text appears above the overlay */
 .hero-content {
     position: relative;
     z-index: 2;
@@ -310,45 +320,45 @@ h2::after {
 /* About Section */
 .about-container {
     display: flex;
-    flex-direction: row; /* Place image to the right */
+    flex-direction: row;
     align-items: center;
-    gap: 15px; /* Reduce gap */
-    padding: 30px; /* Reduce padding */
-    background: var(--about-background); /* Updated to use the new variable */
+    gap: 15px;
+    padding: 30px; 
+    background: var(--about-background); 
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    color: var(--about-text-color); /* Updated to use the new variable */
-    text-align: center; /* Centralize text */
+    color: var(--about-text-color); 
+    text-align: center; 
 }
 
 .about-text {
-    font-size: 1.1rem; /* Reduce font size */
-    line-height: 1.6; /* Reduce line height */
-    max-width: 700px; /* Reduce max width */
-    margin: auto; /* Center the text block */
+    font-size: 1.1rem; 
+    line-height: 1.6; 
+    max-width: 700px;
+    margin: auto; 
 }
 
 .about-text h3 {
-    font-size: 1.4rem; /* Reduce font size */
+    font-size: 1.4rem; 
     color: #8ab4f8;
-    margin-bottom: 8px; /* Reduce margin */
+    margin-bottom: 8px;
 }
 
 .about-text p {
-    margin-bottom: 15px; /* Reduce margin */
+    margin-bottom: 15px;
 }
 
 .about-text .vision-goals {
-    margin-top: 20px; /* Add space before Vision & Goals */
-    color: #8ab4f8; /* Keep "Vision & Goals" text unchanged */
+    margin-top: 20px;
+    color: #8ab4f8; 
 }
 
 .about-image {
-    flex-shrink: 0; /* Prevent the image from shrinking */
+    flex-shrink: 0;
 }
 
 .about-image img {
-    width: 250px; /* Reduce image size */
+    width: 250px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     border: 5px solid #8ab4f8;
@@ -378,7 +388,7 @@ h2::after {
     justify-content: center;
     cursor: pointer;
     border-radius: 12px;
-    color: var(--project-text-color); /* Updated to use the new variable */
+    color: var(--project-text-color);
     font-weight: bold;
     font-size: 1.2rem;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -438,7 +448,7 @@ h2::after {
 
 /* Search Project Box */
 #search {
-    width: 20%; /* Reduced width */
+    width: 20%;
     padding: 10px;
     font-size: 1rem;
     margin-left: 30px;
@@ -456,7 +466,7 @@ h2::after {
 
 /* Blog Search Box */
 #blog-search {
-    width: 20%; /* Reduced width */
+    width: 20%;
     padding: 10px;
     font-size: 1rem;
     margin-left: 30px;
@@ -474,12 +484,12 @@ h2::after {
 
 /* Blog Section */
 .blog {
-    background: var(--blog-background); /* Updated to use the new variable */
-    color: var(--blog-text-color); /* Updated to use the new variable */
+    background: var(--blog-background); 
+    color: var(--blog-text-color);
 }
 
 .blog-posts {
-    background: var(--blog-posts-background); /* Updated to use the new variable */
+    background: var(--blog-posts-background);
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -490,12 +500,12 @@ h2::after {
 }
 
 .blog-post {
-    background: var(--card-background); /* Ensure blog posts match the light theme */
+    background: var(--card-background); 
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
-    color: var(--blog-text-color); /* Updated to use the new variable */
+    color: var(--blog-text-color); 
 }
 
 .blog-post:hover {
@@ -511,7 +521,7 @@ h2::after {
 
 .blog-post p {
     font-size: 1rem;
-    color: var(--blog-summary-color); /* Updated to use the new variable */
+    color: var(--blog-summary-color);
     margin-bottom: 10px;
 }
 
@@ -566,7 +576,7 @@ h2::after {
 #comment-list {
     list-style: none;
     padding-left: 0;
-    margin-left: 30px; /* Align with the comment input box */
+    margin-left: 30px; 
 }
 
 #comment-list li {
@@ -574,6 +584,88 @@ h2::after {
     padding: 10px;
     border-radius: 6px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Dashboard Section */
+.dashboard {
+    padding: 60px 10%;
+    background: var(--dashboard-background);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: var(--dashboard-text-color);
+    border: 2px solid var(--dashboard-border-color);
+}
+
+/* Interactive Table */
+.data-table {
+    overflow-x: auto;
+    max-height: 400px; /* Set a max height for the table */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.data-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th, .data-table td {
+    padding: 10px;
+    border: 1px solid var(--input-border); 
+    text-align: left;
+    cursor: pointer;
+}
+
+.data-table th.asc::after {
+    content: ' ▲';
+}
+
+.data-table th.desc::after {
+    content: ' ▼';
+}
+
+/* Filter Options */
+.filters {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filters label {
+    margin-right: 10px;
+}
+
+.filters select, .filters input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background: var(--filter-background); 
+    color: var(--filter-text-color); 
+}
+
+#filter-btn {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    background: var(--filter-background); 
+    color: var(--filter-text-color); 
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#filter-btn:hover {
+    background: #6c9ce8;
+}
+
+.charts {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.charts canvas {
+    max-width: 300px;
+    max-height: 300px;
 }
 
 /* Contact Section */
@@ -635,17 +727,6 @@ h2::after {
     background: #6c9ce8;
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    background: var(--nav-background);
-    color: var(--text-color);
-    font-size: 1rem;
-    display: flex;
-    justify-content: center;
-}
-
 /* Scroll to Top Button */
 #scrollToTopBtn {
     position: fixed;
@@ -671,129 +752,15 @@ footer {
     opacity: 1;
 }
 
-/* Dashboard Section */
-.dashboard {
-    padding: 60px 10%;
-    background: var(--dashboard-background);
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    color: var(--dashboard-text-color);
-    border: 2px solid var(--dashboard-border-color);
-}
-
-/* Interactive Table */
-.data-table {
-    overflow-x: auto;
-    max-height: 400px; /* Set a max height for the table */
-    overflow-y: auto; /* Enable vertical scrolling */
-}
-
-.data-table table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.data-table th, .data-table td {
-    padding: 10px;
-    border: 1px solid var(--input-border); /* Updated to match input border color */
-    text-align: left;
-    cursor: pointer;
-}
-
-.data-table th.asc::after {
-    content: ' ▲';
-}
-
-.data-table th.desc::after {
-    content: ' ▼';
-}
-
-/* Filter Options */
-.filters {
-    margin-bottom: 20px;
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--nav-background);
+    color: var(--text-color);
+    font-size: 1rem;
     display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.filters label {
-    margin-right: 10px;
-}
-
-.filters select, .filters input {
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #444;
-    background: var(--filter-background); /* Updated to use the new variable */
-    color: var(--filter-text-color); /* Updated to use the new variable */
-}
-
-#filter-btn {
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: none;
-    background: var(--filter-background); /* Updated to use the new variable */
-    color: var(--filter-text-color); /* Updated to use the new variable */
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-#filter-btn:hover {
-    background: #6c9ce8;
-}
-
-.charts {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-}
-
-.charts canvas {
-    max-width: 300px;
-    max-height: 300px;
-}
-
-/* Interactive Table */
-.data-table {
-    overflow-x: auto;
-    max-height: 400px; /* Set a max height for the table */
-    overflow-y: auto; /* Enable vertical scrolling */
-}
-
-.data-table table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.data-table th, .data-table td {
-    padding: 10px;
-    border: 1px solid var(--input-border); /* Updated to match input border color */
-    text-align: left;
-    cursor: pointer;
-}
-
-.data-table th.asc::after {
-    content: ' ▲';
-}
-
-.data-table th.desc::after {
-    content: ' ▼';
-}
-
-/* Theme Toggle Button */
-#theme-toggle {
-    padding: 10px 20px;
-    background: var(--button-background);
-    color: var(--button-text-color);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s, color 0.3s;
-}
-
-#theme-toggle:hover {
-    background: var(--button-text-color);
-    color: var(--button-background);
+    justify-content: center;
 }
 
 /* Responsive Design - Ensuring the site works well on smaller screens */
@@ -833,7 +800,7 @@ footer {
     }
 
     .contact textarea {
-        width: 100%; /* Adjust width for smaller screens */
+        width: 100%; 
     }
 
     .dashboard {
@@ -850,7 +817,7 @@ footer {
     .filters input, 
     #filter-btn {
         width: auto;
-        flex: 1 1 200px; /* Flexible width for filters */
+        flex: 1 1 200px; 
     }
 
     .charts {
@@ -860,12 +827,12 @@ footer {
     }
 
     .charts canvas {
-        max-width: 45%; /* Adjust chart size for medium screens */
+        max-width: 45%; 
         height: auto;
     }
 
     .data-table table {
-        font-size: 0.9rem; /* Slightly smaller font for better fit */
+        font-size: 0.9rem; 
     }
 }
 
@@ -908,7 +875,7 @@ footer {
     }
 
     .contact textarea {
-        width: 100%; /* Adjust width for smaller screens */
+        width: 100%; 
     }
 
     nav {
@@ -938,7 +905,7 @@ footer {
     .filters select, 
     .filters input, 
     #filter-btn {
-        width: 100%; /* Full width for smaller screens */
+        width: 100%; 
     }
 
     .charts {
@@ -948,16 +915,16 @@ footer {
     }
 
     .charts canvas {
-        max-width: 90%; /* Adjust chart size for smaller screens */
+        max-width: 90%; 
         height: auto;
     }
 
     .data-table {
-        overflow-x: auto; /* Enable horizontal scrolling for tables */
+        overflow-x: auto; 
     }
 
     .data-table table {
-        font-size: 0.85rem; /* Slightly smaller font for better fit */
+        font-size: 0.85rem; 
     }
 }
 
@@ -1000,7 +967,7 @@ footer {
     }
 
     .contact textarea {
-        width: 100%; /* Adjust width for smaller screens */
+        width: 100%;
     }
 
     nav {
@@ -1025,12 +992,12 @@ footer {
     }
 
     .charts canvas {
-        max-width: 100%; /* Full width for very small screens */
+        max-width: 100%; 
         height: auto;
     }
 
     .data-table table {
-        font-size: 0.8rem; /* Further reduce font size for very small screens */
+        font-size: 0.8rem; 
     }
 }
 
