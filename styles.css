@@ -49,7 +49,6 @@ html {
 
 .light-theme .card, 
 .light-theme .project, 
-.light-theme .blog-post, 
 .light-theme .modal-content, 
 .light-theme .data-table table {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -376,6 +375,11 @@ h2::after {
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.light-theme .project {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .project {
@@ -506,6 +510,19 @@ h2::after {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
     color: var(--blog-text-color); 
+}
+
+.light-theme .blog-post {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.light-theme .blog-posts {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.light-theme .blog-post:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .blog-post:hover {
@@ -750,6 +767,32 @@ h2::after {
 
 #scrollToTopBtn.show {
     opacity: 1;
+}
+
+/* Full Content and Smooth Transition */
+.full-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.full-content.expanded {
+    max-height: 500px; /* Adjust based on content length */
+}
+
+/* Optional: Style the toggle button */
+.toggle-content-btn {
+    background: #8ab4f8;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.toggle-content-btn:hover {
+    background: #6c9ce8;
 }
 
 /* Footer */

@@ -53,6 +53,16 @@ blogSearchInput.addEventListener("keyup", () => {
     });
 });
 
+// Toggle Blog Post Content
+document.querySelectorAll('.toggle-content-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const blogPost = button.closest('.blog-post');
+        const fullContent = blogPost.querySelector('.full-content');
+        const isExpanded = fullContent.classList.toggle('expanded');
+        button.textContent = isExpanded ? 'Read Less' : 'Read More';
+    });
+});
+
 // Blog Comment System
 const addComment = () => {
     const commentInput = document.getElementById("comment-input");
