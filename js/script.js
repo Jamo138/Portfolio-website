@@ -64,16 +64,42 @@ document.querySelectorAll('.toggle-content-btn').forEach(button => {
 });
 
 // Blog Comment System
-const addComment = () => {
-    const commentInput = document.getElementById("comment-input");
-    const commentList = document.getElementById("comment-list");
-    if (commentInput.value.trim() !== "") {
-        const li = document.createElement("li");
-        li.textContent = commentInput.value;
-        commentList.appendChild(li);
-        commentInput.value = "";
-    }
+const loadComments = () => {
+    const comments = JSON.parse(localStorage.getItem('comments')) || {};
+    document.querySelectorAll('.comments-list').forEach(list => {
+        const postId = list.getAttribute('data-post-id');
+        list.innerHTML = '';
+        (comments[postId] || []).forEach(comment => {
+            const li = document.createElement('li');
+            li.textContent = comment;
+            list.appendChild(li);
+        });
+    });
 };
+
+const saveComment = (postId, comment) => {
+    const comments = JSON.parse(localStorage.getItem('comments')) || {};
+    if (!comments[postId]) {
+        comments[postId] = [];
+    }
+    comments[postId].push(comment);
+    localStorage.setItem('comments', JSON.stringify(comments));
+};
+
+document.querySelectorAll('.add-comment-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const postId = button.getAttribute('data-post-id');
+        const input = document.querySelector(`.comment-input[data-post-id="${postId}"]`);
+        const comment = input.value.trim();
+        if (comment) {
+            saveComment(postId, comment);
+            loadComments();
+            input.value = '';
+        }
+    });
+});
+
+loadComments();
 
 // Contact Form Validation
 const contactForm = document.getElementById("contact-form");
@@ -412,19 +438,6 @@ const fetchData = async () => {
         if (currentTheme === "light") {
             updateChartColors();
         }
-
-        // Adjust dashboard layout for responsiveness
-        const adjustDashboardLayout = () => {
-            const isSmallScreen = window.innerWidth <= 768;
-            pieChart.options.plugins.legend.position = isSmallScreen ? "bottom" : "right";
-            pieChart.update();
-        };
-
-        // Call adjustDashboardLayout on window resize
-        window.addEventListener("resize", adjustDashboardLayout);
-
-        // Ensure layout is adjusted on page load
-        adjustDashboardLayout();
 
     } catch (error) {
         console.error('Error loading the data:', error);

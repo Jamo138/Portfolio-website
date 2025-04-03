@@ -79,7 +79,8 @@ html {
     border-radius: 6px;
     padding: 10px;
     font-size: 1rem;
-    color: var(--text-color);
+    color: var(--text-color) !important; /* Force text color to ensure visibility */
+    caret-color: var(--text-color); /* Ensure the text cursor is visible */
     transition: border-color 0.3s;
 }
 
@@ -139,6 +140,10 @@ html {
     border-radius: 8px;
     padding: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.light-theme #confirmation-message {
+    color: var(--text-color); /* Use the darker text color for light mode */
 }
 
 body {
@@ -553,54 +558,76 @@ h2::after {
     color: #6c9ce8;
 }
 
-/* Leave a Comment Box */
-#comment-input {
-    width: 20%; /* Reduced width */
+/* Comments Section */
+.comments-section {
+    margin-top: 20px;
+    padding: 15px;
+    background: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.comments-section h4 {
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.comments-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.comments-list li {
     padding: 10px;
-    margin-left: 30px;
-    font-size: 1rem;
+    margin-bottom: 8px;
+    background: #1a1a1a;
+    border-radius: 6px;
+    color: var(--text-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.light-theme .comments-list li {
+    background: var(--input-background); /* White background for light mode */
+    color: var(--text-color); /* Black text for light mode */
+    border: 1px solid var(--input-border);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comment-input {
+    width: calc(100% - 90px);
+    padding: 10px;
+    margin-right: 10px;
     border: 1px solid var(--input-border);
     border-radius: 6px;
     background: var(--input-background);
     color: var(--text-color);
-    margin-bottom: 10px;
-    transition: border 0.3s;
-}
-
-#comment-input:focus {
-    border: 1px solid var(--button-background);
-}
-
-#comments-section h3 {
-    margin-left: 30px;
-}
-
-#comments-section button {
-    padding: 10px 20px;
     font-size: 1rem;
-    background: #8ab4f8;
-    color: white;
+    transition: border-color 0.3s;
+}
+
+.comment-input:focus {
+    border-color: var(--button-background);
+    outline: none;
+}
+
+.add-comment-btn {
+    padding: 10px 15px;
+    background: var(--button-background);
+    color: var(--button-text-color);
     border: none;
-    cursor: pointer;
     border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
     transition: background 0.3s;
 }
 
-#comments-section button:hover {
+.add-comment-btn:hover {
     background: #6c9ce8;
-}
-
-#comment-list {
-    list-style: none;
-    padding-left: 0;
-    margin-left: 30px; 
-}
-
-#comment-list li {
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 6px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Dashboard Section */
