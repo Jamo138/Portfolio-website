@@ -33,7 +33,7 @@ searchInput.addEventListener("keyup", () => {
     });
 });
 
-// Modal Functions
+// Updated project names in modal functions
 const openModal = (modalId) => {
     document.getElementById(modalId).style.display = 'block';
 };
@@ -41,6 +41,14 @@ const openModal = (modalId) => {
 const closeModal = (modalId) => {
     document.getElementById(modalId).style.display = 'none';
 };
+
+// Example usage with updated modal IDs
+document.querySelectorAll(".project").forEach(project => {
+    project.addEventListener("click", () => {
+        const modalId = project.getAttribute("onclick").match(/'(.*?)'/)[1];
+        openModal(modalId);
+    });
+});
 
 // Blog Search
 const blogSearchInput = document.getElementById("blog-search");

@@ -55,38 +55,36 @@ html {
     border-radius: 8px;
 }
 
-.light-theme button {
+/* Unified Button Styles */
+button, #theme-toggle {
+    padding: 10px 20px;
     background: var(--button-background);
     color: var(--button-text-color);
     border: none;
     border-radius: 6px;
-    padding: 10px 20px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.light-theme button:hover {
-    background: #6c9ce8; 
-    transform: scale(1.05); 
+button:hover, #theme-toggle:hover {
+    background: #6c9ce8; /* Slightly lighter shade for hover */
+    transform: scale(1.05); /* Unified hover effect */
 }
 
-.light-theme input, 
-.light-theme textarea, 
-.light-theme select {
+/* Unified Input and Textarea Styles */
+input, textarea, select {
     background: var(--input-background);
     border: 1px solid var(--input-border);
     border-radius: 6px;
     padding: 10px;
     font-size: 1rem;
-    color: var(--text-color) !important; /* Force text color to ensure visibility */
-    caret-color: var(--text-color); /* Ensure the text cursor is visible */
-    transition: border-color 0.3s;
+    color: var(--text-color);
+    caret-color: var(--text-color);
+    transition: border-color 0.3s ease;
 }
 
-.light-theme input:focus, 
-.light-theme textarea:focus, 
-.light-theme select:focus {
+input:focus, textarea:focus, select:focus {
     border-color: var(--button-background);
     outline: none;
 }
@@ -124,22 +122,41 @@ html {
 }
 
 /* Scroll to Top Button */
-.light-theme #scrollToTopBtn {
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
     background-color: var(--button-background);
     color: var(--button-text-color);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 24px;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
 }
 
-.light-theme #scrollToTopBtn:hover {
+#scrollToTopBtn.show {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+#scrollToTopBtn:hover {
     background-color: #6c9ce8;
 }
 
 /* Charts container */
-.light-theme .charts canvas {
+.charts canvas {
     background: var(--card-background);
     border-radius: 8px;
     padding: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .light-theme #confirmation-message {
@@ -193,22 +210,6 @@ nav {
 
 .nav-links a:hover {
     color: #8ab4f8;
-}
-
-/* Theme Toggle Button */
-#theme-toggle {
-    padding: 10px 20px;
-    background: var(--button-background);
-    color: var(--button-text-color);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s, color 0.3s;
-}
-
-#theme-toggle:hover {
-    background: var(--button-text-color);
-    color: var(--button-background);
 }
 
 /* Section Headers */
@@ -383,31 +384,52 @@ h2::after {
     margin-bottom: 30px;
 }
 
-.light-theme .project {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
+/* Project Hover Effect */
 .project {
+    position: relative;
     width: 250px;
     height: 180px;
     background: var(--card-background);
     display: flex;
     align-items: center;
-    text-align: center;
     justify-content: center;
-    cursor: pointer;
+    text-align: center;
     border-radius: 12px;
     color: var(--project-text-color);
     font-weight: bold;
     font-size: 1.2rem;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .project:hover {
     transform: scale(1.08);
-    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
-    background: #8ab4f8;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #6a5acd, #8ab4f8); /* Original purple and blue gradient */
+}
+
+.project-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Dark mode background */
+    color: white;
+    padding: 10px;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.project:hover .project-info {
+    transform: translateY(0);
+}
+
+.light-theme .project-info {
+    background: rgba(255, 255, 255, 0.9); /* Light mode background */
+    color: var(--text-color);
 }
 
 /* Modal Styles */
@@ -441,15 +463,16 @@ h2::after {
     margin-bottom: 20px;
 }
 
+/* Unified Modal Close Button */
 .close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    transition: color 0.3s ease;
 }
 
-.close:hover,
-.close:focus {
+.close:hover, .close:focus {
     color: #fff;
     text-decoration: none;
     cursor: pointer;
@@ -508,31 +531,19 @@ h2::after {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Unified Blog Post Hover Effect */
 .blog-post {
-    background: var(--card-background); 
+    background: var(--card-background);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
-    color: var(--blog-text-color); 
-}
-
-.light-theme .blog-post {
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-}
-
-.light-theme .blog-posts {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.light-theme .blog-post:hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--blog-text-color);
 }
 
 .blog-post:hover {
     transform: scale(1.02);
-    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .blog-post h3 {
@@ -769,31 +780,6 @@ h2::after {
 
 .contact button:hover {
     background: #6c9ce8;
-}
-
-/* Scroll to Top Button */
-#scrollToTopBtn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background-color: #8ab4f8;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 24px;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    z-index: 1000;
-}
-
-#scrollToTopBtn.show {
-    opacity: 1;
 }
 
 /* Full Content and Smooth Transition */
