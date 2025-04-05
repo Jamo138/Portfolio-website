@@ -129,6 +129,27 @@ const scrollToTop = () => {
     document.documentElement.scrollTop = 0;
 };
 
+// Scroll Animation
+const fadeInElements = document.querySelectorAll('.fade-in');
+
+const handleScrollAnimation = () => {
+    fadeInElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (elementTop < windowHeight - 100) {
+            element.classList.add('visible');
+        } else {
+            element.classList.remove('visible');
+        }
+    });
+};
+
+window.addEventListener('scroll', handleScrollAnimation);
+
+// Trigger animation on page load
+handleScrollAnimation();
+
 // Theme Toggle
 const themeToggle = document.getElementById("theme-toggle");
 const currentTheme = localStorage.getItem("theme") || "dark";
