@@ -33,7 +33,7 @@ searchInput.addEventListener("keyup", () => {
     });
 });
 
-// Updated project names in modal functions
+// Modal Functions
 const openModal = (modalId) => {
     document.getElementById(modalId).style.display = 'block';
 };
@@ -41,14 +41,6 @@ const openModal = (modalId) => {
 const closeModal = (modalId) => {
     document.getElementById(modalId).style.display = 'none';
 };
-
-// Example usage with updated modal IDs
-document.querySelectorAll(".project").forEach(project => {
-    project.addEventListener("click", () => {
-        const modalId = project.getAttribute("onclick").match(/'(.*?)'/)[1];
-        openModal(modalId);
-    });
-});
 
 // Blog Search
 const blogSearchInput = document.getElementById("blog-search");
@@ -85,6 +77,7 @@ const loadComments = () => {
     });
 };
 
+//Save Comments to Local Storage
 const saveComment = (postId, comment) => {
     const comments = JSON.parse(localStorage.getItem('comments')) || {};
     if (!comments[postId]) {
@@ -129,7 +122,7 @@ const scrollToTop = () => {
     document.documentElement.scrollTop = 0;
 };
 
-// Scroll Animation
+// FadeIn Scroll Animation
 const fadeInElements = document.querySelectorAll('.fade-in');
 
 const handleScrollAnimation = () => {
@@ -225,7 +218,7 @@ const fetchData = async () => {
 
         const lineChart = new Chart(document.getElementById('lineChart'), lineChartConfig);
 
-        // Bar Chart (Blog Post Views Comparison)
+        // Bar Chart (Blog Post Views)
         const barChartData = {
             labels: data.blogPosts.map(post => post.title),
             datasets: [{
@@ -282,7 +275,7 @@ const fetchData = async () => {
         }, {});
 
         const pieChartData = {
-            labels: Object.keys(commentsCount), // Use post titles as labels
+            labels: Object.keys(commentsCount),
             datasets: [{
                 label: 'Number of Comments',
                 data: Object.values(commentsCount),
@@ -347,7 +340,7 @@ const fetchData = async () => {
         const endDateInput = document.getElementById('end-date');
 
         const populateTable = (filteredData) => {
-            dataTableBody.innerHTML = ''; // Clear existing table data
+            dataTableBody.innerHTML = ''; //
 
             filteredData.forEach(item => {
                 const row = document.createElement('tr');
@@ -360,6 +353,7 @@ const fetchData = async () => {
             });
         };
 
+        // Filter data based on selected type and date range
         const filterData = () => {
             const dataType = dataTypeSelect.value;
             const startDate = new Date(startDateInput.value);
@@ -385,7 +379,7 @@ const fetchData = async () => {
 
             populateTable(filteredData);
 
-            // Update charts to update without refreshing the page
+            // Set charts to update without refreshing the page
             if (dataType === 'projects') {
                 lineChart.data.labels = filteredData.map(project => project.title);
                 lineChart.data.datasets[0].data = filteredData.map(project => project.progress);
@@ -407,10 +401,9 @@ const fetchData = async () => {
 
         filterBtn.addEventListener('click', filterData);
 
-        // Initial population of the table
         filterData();
 
-        // Make the table interactive
+        // Ensures the table is interactive
         const dataTable = document.getElementById('dataTable');
         const headers = dataTable.querySelectorAll('th');
         headers.forEach(header => {
@@ -432,7 +425,7 @@ const fetchData = async () => {
             });
         });
 
-        // Update chart text colors based on theme
+        // Ensures chart text colors match the theme
         const updateChartColors = () => {
             const isLightTheme = document.body.classList.contains("light-theme");
             const textColor = isLightTheme ? "#000000" : "#ddd";
@@ -468,6 +461,7 @@ const fetchData = async () => {
             updateChartColors();
         }
 
+        // Error handling for charts
     } catch (error) {
         console.error('Error loading the data:', error);
         alert('Failed to load data. Please try again later.');

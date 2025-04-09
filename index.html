@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures responsive design by setting the viewport width to the device's width -->
     <title>Jamo's Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Importing Chart.js library for data visualization -->
     <script defer src="js/script.js"></script>
 </head>
 <body>
     <header>
+        <!-- Navigation Section -->
         <nav>
             <div class="logo">My Portfolio</div>
             <ul class="nav-links">
@@ -24,12 +25,14 @@
         </nav>
     </header>
     
+    <!-- Home Section with Hero Content -->
     <section id="home" class="hero">
         <div class="hero-content">
             <p>Exploring the Intersection of Technology and Creativity</p>
+            <!-- Typing Effect -->
             <h1 id="typing-effect" data-text='[
                 "Hi, My Name is Michael",
-                "I am an Aspiring Software developer",
+                "I am an Aspiring Software Developer",
                 "I am skilled in:",
                 "Web Development",
                 "Data Analytics",
@@ -38,6 +41,7 @@
         </div>
     </section>
     
+    <!-- About Section -->
     <section id="about" class="about fade-in">
         <h2>About Me</h2>
         <div class="about-container">
@@ -52,10 +56,13 @@
         </div>
     </section>
     
+    <!-- Project Section -->
     <section id="projects" class="projects fade-in">
         <h2>Projects</h2>
+        <!-- Search Bar for Projects -->
         <input type="text" id="search" placeholder="Search projects...">
         <div class="project-list">
+            <!-- Trigger Project Modals for More Details -->
             <div class="project" data-name="MetroEyes Analytics" onclick="openModal('metroEyesAnalyticsModal')">MetroEyes Analytics</div>
             <div class="project" data-name="Cinevault" onclick="openModal('cinevaultModal')">Cinevault</div>
             <div class="project" data-name="Animation Fundamentals" onclick="openModal('animationFundamentalsModal')">Animation Fundamentals</div>
@@ -63,7 +70,7 @@
         </div>
     </section>
 
-    <!-- Modals for Projects -->
+    <!-- MetroEyes Analytics Project Modal -->
     <div id="metroEyesAnalyticsModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('metroEyesAnalyticsModal')">&times;</span>
@@ -82,6 +89,7 @@
         </div>
     </div>
 
+    <!-- Cinevault Project Modal -->
     <div id="cinevaultModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('cinevaultModal')">&times;</span>
@@ -99,6 +107,7 @@
         </div>
     </div>
 
+    <!-- Animation Fundamentals Project Modal -->
     <div id="animationFundamentalsModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('animationFundamentalsModal')">&times;</span>
@@ -117,6 +126,7 @@
         </div>
     </div>
 
+    <!-- HMDS Project Modal -->
     <div id="hmdsModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('hmdsModal')">&times;</span>
@@ -134,10 +144,14 @@
         </div>
     </div>
     
+    <!-- Blog Section -->
     <section id="blog" class="blog fade-in">
         <h2>Blog</h2>
+        <!-- Search Bar for Blog Posts -->
         <input type="text" id="blog-search" placeholder="Search blog posts...">
         <div class="blog-posts">
+
+            <!-- JavaScript Basics Blog -->
             <div class="blog-post">
                 <h3>JavaScript Basics</h3>
                 <p class="excerpt">A deep dive into JavaScript basics.</p>
@@ -155,6 +169,8 @@
                 </div>
                 <button class="toggle-content-btn">Read More</button>
             </div>
+
+            <!-- Understanding APIS Blog -->
             <div class="blog-post">
                 <h3>Understanding APIs</h3>
                 <p class="excerpt">An introduction to APIs and how they work.</p>
@@ -172,6 +188,8 @@
                 </div>
                 <button class="toggle-content-btn">Read More</button>
             </div>
+
+            <!-- CSS Grid vs Flexbox Blog -->
             <div class="blog-post">
                 <h3>CSS Grid vs Flexbox</h3>
                 <p class="excerpt">Comparing CSS Grid and Flexbox for layout design.</p>
@@ -189,6 +207,8 @@
                 </div>
                 <button class="toggle-content-btn">Read More</button>
             </div>
+
+            <!-- React Hooks Deep Dive Blog -->
             <div class="blog-post">
                 <h3>React Hooks Deep Dive</h3>
                 <p class="excerpt">Exploring React Hooks in detail.</p>
@@ -209,8 +229,10 @@
         </div>
     </section>
     
+    <!-- Dashboard Section-->
     <section id="dashboard" class="dashboard fade-in">
         <h2>Dashboard</h2>
+        <!-- Filters for Data Visualization -->
         <div class="filters">
             <label for="data-type">Data Type:</label>
             <select id="data-type">
@@ -243,6 +265,7 @@
         </div>
     </section>
     
+    <!-- Contact Section -->
     <section id="contact" class="contact fade-in">
         <h2>Contact Me</h2>
         <form id="contact-form">
@@ -254,10 +277,12 @@
         <p id="confirmation-message" style="display:none;">Thank you for your message!</p>
     </section>
     
+    <!-- Scroll To Top Button -->
     <button id="scrollToTopBtn" onclick="scrollToTop()">&#8679;</button>
     
+    <!-- Footer Section -->
     <footer>
-        <p>&copy; 2025 Jamo. All rights reserved.</p>
+        <p>&copy; 2025 Michael Afolabi. All rights reserved.</p>
     </footer>
 </body>
 </html>
